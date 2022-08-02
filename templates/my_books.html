@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if my_books %}
+<h3 class="mb-4">Books reserved by {{current_user.first_name}}</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Quantity on stock</th>
+    </tr>
+    </thead>
+    {% for book in my_books %}
+    {% if current_user in book.readers %}
+    <tbody>
+    <tr class="table">
+        <th scope="row">{{ book.id }}</th>
+        <td>{{ book.title }}</td>
+        <td>
+            <br>
+            {% endfor %}
+        </td>
+        <td>{{ book.stock }}</td>
+        <td>
+            <br>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+{% endblock %}
