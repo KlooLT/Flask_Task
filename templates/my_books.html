@@ -20,9 +20,12 @@
         <th scope="row">{{ book.id }}</th>
         <td>{{ book.title }}</td>
         <td>
+            {% for author in book.author %}
+            {{author.first_name}} {{author.last_name}}
             <br>
             {% endfor %}
         </td>
+
         <td>{{ book.stock }}</td>
         <td>
             <br>
